@@ -1,10 +1,5 @@
-import Header from '../components/header'
+import PostsList from "../components/PostsList";
 
-const Home = () => (
-  <>
-    <Header />
-    <h1>Hello World!</h1>
-  </>
-)
+const Home = () => <PostsList />;
 
-export default Home
+export default Home;

@@ -1,0 +1,9 @@
+:root {
+  --text-primary: #212121;
+  --text-secondary: #616161;
+}
+
+body {
+  color: var(--text-primary);
+  padding: 2rem;
+}
