@@ -1,13 +1,29 @@
-import Grid from "@material-ui/core/Grid";
+import { CircularProgress, Grid } from "@material-ui/core";
+
+import { useGetPosts } from "../../queries/useGetPosts";
 
 import ListItem from "./ListItem";
 
 const PostsList = () => {
+  const { data, error, isFetching } = useGetPosts();
+
+  if (!data && !error && isFetching) {
+    return <CircularProgress />;
+  }
+
+  if (!data || error) {
+    return (
+      <Typography variant="h5">
+        An error has occured. Try reloading the page
+      </Typography>
+    );
+  }
+
   return (
     <Grid container direction="row" spacing={2} wrap="wrap" grid-xs-3>
-      {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+      {data?.jobs.map(({ id, title, location }) => (
         <Grid item xs={4}>
-          <ListItem key={i} />
+          <ListItem key={id} id={id} title={title} subtitle={location.name} />
         </Grid>
       ))}
     </Grid>
