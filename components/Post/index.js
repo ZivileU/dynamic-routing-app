@@ -4,6 +4,7 @@ import {
   Link,
   Typography,
 } from "@material-ui/core";
+
 import { useGetPost } from "../../queries/useGetPost";
 
 import styles from "./Post.module.css";
@@ -23,13 +24,21 @@ const Post = ({ id }) => {
     );
   }
 
-  console.log(data, error, isFetching);
+  if (data) {
+    const parser = new DOMParser();
+    const htmlString = parser.parseFromString(data?.content, "text/html");
+    const insert = document.querySelector("#insert");
+    insert?.insertAdjacentHTML("beforeend", htmlString.firstChild.innerText);
+  }
 
   return (
     <Container>
+      <Typography variant="h4">{data.title}</Typography>
+      <Typography variant="subtitle2">Updated at: {data.updated_at}</Typography>
       <Link href={data.absolute_url} target="_blank" rel="noopener noreferrer">
         Click to see the full addvertisement
       </Link>
+      <section id="insert"></section>
     </Container>
   );
 };

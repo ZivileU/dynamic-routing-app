@@ -19,11 +19,13 @@ const PostsList = () => {
     );
   }
 
+  console.log(data);
+
   return (
     <Grid container direction="row" spacing={2} wrap="wrap" grid-xs-3>
       {data?.jobs.map(({ id, title, location }) => (
-        <Grid item xs={4}>
-          <ListItem key={id} id={id} title={title} subtitle={location.name} />
+        <Grid key={id} item xs={4}>
+          <ListItem id={id} title={title} subtitle={location.name} />
         </Grid>
       ))}
     </Grid>
