@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 import { Card, CardContent, Typography } from "@material-ui/core";
 

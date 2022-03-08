@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import {
   CircularProgress,
   Container,
@@ -5,12 +7,26 @@ import {
   Typography,
 } from "@material-ui/core";
 
-import { useGetPost } from "../../queries/useGetPost";
+import useGetPost from "../../queries/useGetPost";
 
 import styles from "./Post.module.css";
 
 const Post = ({ id }) => {
-  const { data, error, isFetching } = useGetPost({ id });
+  const { data, error, isFetching } = useGetPost(id);
+  const { title, updated_at, absolute_url, content } = data || {};
+
+  const parseHtml = () => {
+    const parser = new DOMParser();
+    const parsedHtml = parser.parseFromString(content, "text/html");
+    const { innerText } = parsedHtml.firstChild;
+
+    return innerText;
+  };
+
+  useEffect(() => {
+    const insert = document.querySelector("#insert");
+    insert?.insertAdjacentHTML("beforeend", parseHtml());
+  }, [data]);
 
   if (!data && !error && isFetching) {
     return <CircularProgress />;
@@ -24,19 +40,16 @@ const Post = ({ id }) => {
     );
   }
 
-  if (data) {
-    const parser = new DOMParser();
-    const htmlString = parser.parseFromString(data?.content, "text/html");
-    const insert = document.querySelector("#insert");
-    insert?.insertAdjacentHTML("beforeend", htmlString.firstChild.innerText);
-  }
-
   return (
-    <Container>
-      <Typography variant="h4">{data.title}</Typography>
-      <Typography variant="subtitle2">Updated at: {data.updated_at}</Typography>
-      <Link href={data.absolute_url} target="_blank" rel="noopener noreferrer">
-        Click to see the full addvertisement
+    <Container maxWidth="lg">
+      <Typography className={styles.title} variant="h2">
+        {title}
+      </Typography>
+      <Typography className={styles.updatedAt} variant="subtitle2">
+        Updated at: {updated_at}
+      </Typography>
+      <Link href={absolute_url} target="_blank" rel="noopener noreferrer">
+        See full addvertisement
       </Link>
       <section id="insert"></section>
     </Container>

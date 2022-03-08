@@ -1,0 +1,10 @@
+h2.title {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+
+.updatedAt {
+  color: var(--color-text-secondary);
+}

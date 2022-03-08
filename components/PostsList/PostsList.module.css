@@ -1,10 +1,10 @@
 .card {
   height: 130px;
-  overflow: scroll !important;
+  overflow: scroll !important; /* to overwrite material UI styles */
 }
 
 .card h6 {
-  color: var(--text-secondary);
+  color: var(--color-text-secondary);
 }
 
 .card p {
