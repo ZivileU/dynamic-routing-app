@@ -48,7 +48,12 @@ const Post = ({ id }) => {
       <Typography className={styles.updatedAt} variant="subtitle2">
         Updated at: {updated_at}
       </Typography>
-      <Link href={absolute_url} target="_blank" rel="noopener noreferrer">
+      <Link
+        className={styles.link}
+        href={absolute_url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         See full addvertisement
       </Link>
       <section id="insert"></section>

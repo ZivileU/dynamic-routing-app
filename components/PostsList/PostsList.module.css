@@ -1,6 +1,6 @@
 .card {
   height: 130px;
-  overflow: scroll !important; /* to overwrite material UI styles */
+  overflow: scroll;
 }
 
 .card h6 {

@@ -8,3 +8,8 @@ h2.title {
 .updatedAt {
   color: var(--color-text-secondary);
 }
+
+a.link {
+  color: var(--color-text-link);
+  text-decoration: none;
+}

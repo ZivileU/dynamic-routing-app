@@ -1,5 +1,6 @@
 import App from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { StyledEngineProvider } from "@mui/material/styles";
 
 import "./styles.css";
 
@@ -10,7 +11,9 @@ class MyApp extends App {
 
     return (
       <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
+        <StyledEngineProvider injectFirst>
+          <Component {...pageProps} />
+        </StyledEngineProvider>
       </QueryClientProvider>
     );
   }

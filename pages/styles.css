@@ -20,6 +20,6 @@ h2 strong {
 }
 
 a {
-  color: var(--color-text-link) !important;
+  color: var(--color-text-link);
   text-decoration: none;
 }

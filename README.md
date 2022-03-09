@@ -1,35 +1,11 @@
-# Dynamic Routing example
+# Tech stack
 
-This example shows how to do [dynamic routing](https://nextjs.org/docs/routing/dynamic-routes) in Next.js. It contains two dynamic routes:
+The application was created using Next.js examaple with `dynamic routing` as the base template. `Docker` and `eslint` were also added to the initial setup. `Material UI` was used for component and the dfault`CSS module` setup for writing CSS.
 
-1. `pages/post/[id]/index.js`
-   - e.g. matches `/post/my-example` (`/post/:id`)
-1. `pages/post/[id]/[comment].js`
-   - e.g. matches `/post/my-example/a-comment` (`/post/:id/:comment`)
+## Styling
 
-These routes are automatically matched by the server.
-You can use `next/link` as displayed in this example to route to these pages client side.
+I've created a global stylesheet where I've declared some purpose variables for font colors and general global CSS that was needed. To overwrite Material UI styles the main app component was wrapped in a `StyledEngineProvider` as per instructions by Material UI. I've tried to follow some font and color styles from the original job addvertisement on the Unity careers page.
 
-## Preview
+## Data fetching and state management
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/dynamic-routing)
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/dynamic-routing&project-name=dynamic-routing&repository-name=dynamic-routing)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example dynamic-routing dynamic-routing-app
-# or
-yarn create next-app --example dynamic-routing dynamic-routing-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+For data fetching I used `ReactQuery` library and `axios`. I am working on a small POC project for ReactQuery at the moment and wanted to use the oportunity to learn it better. I think it's a usefull library for optimising api calls, caching and a smooth user experience. It can also replace some of the global and local state management, since the data can be retrieved using ReactQuery hooks wherever it's needed. There was no need to use Redux or context in this application, but in general I would vouch for using context for global state. When combined with ReactQuery and hooks for local state, it eliminates the need to use Redux.
