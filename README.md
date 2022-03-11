@@ -9,3 +9,12 @@ I've created a global stylesheet where I've declared some purpose variables for 
 ## Data fetching and state management
 
 For data fetching I used `ReactQuery` library and `axios`. I am working on a small POC project for ReactQuery at the moment and wanted to use the oportunity to learn it better. I think it's a usefull library for optimising api calls, caching and a smooth user experience. It can also replace some of the global and local state management, since the data can be retrieved using ReactQuery hooks wherever it's needed. There was no need to use Redux or context in this application, but in general I would vouch for using context for global state. When combined with ReactQuery and hooks for local state, it eliminates the need to use Redux.
+
+## Improvements
+
+What would I do if I had more time. In the order of priority:
+
+- Tests! They are very important. I'd use `Jest` and `React testing library`.
+- Format the `updatedAt` date. I'd use moment `library` for it.
+- Add the search.
+- Styling of the single job page.
